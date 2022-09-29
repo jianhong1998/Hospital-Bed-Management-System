@@ -1,0 +1,5 @@
+# Ignore all files under ./build/ folder
+build/
+
+# Ignore all files under ./node-modules/ folder
+node_modules/
