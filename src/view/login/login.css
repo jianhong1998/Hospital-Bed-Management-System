@@ -1,0 +1,7 @@
+form {
+    align-content: center;
+    justify-content: center;
+    border: 2px black solid;
+    width: fit-content;
+    height: auto;
+}
