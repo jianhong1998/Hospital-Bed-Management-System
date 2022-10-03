@@ -10,13 +10,4 @@ const databaseConfig:ConnectionConfig = {
 
 const databaseConnection = mysql.createConnection(databaseConfig);
 
-databaseConnection.connect((error):void => {
-    if (error) {
-        console.error(error.message);
-        return;
-    }
-
-    console.log("database is connected");
-});
-
 export default databaseConnection;

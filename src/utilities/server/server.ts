@@ -5,8 +5,6 @@ import fetchDatabaseRouter from './router/fetch-database';
 
 
 const server = express();
-const port = 8080;
-const hostAddress = "localhost";
 const currentFolder = path.join(__dirname);
 const loginFilePath = "../../view/";
 
@@ -41,9 +39,5 @@ server.use("/script", buildRouter);
 
 // Fetch data from database, visit "http://[host]:[port]/fetch/[route]"
 server.use('/fetch', fetchDatabaseRouter);
-
-server.listen(port, hostAddress, () => {
-    console.log(`Server is running on http://${hostAddress}:${port}`);
-});
 
 export default server;

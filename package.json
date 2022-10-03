@@ -6,7 +6,9 @@
   "scripts": {
     "build": "npx tsc",
     "start": "npm run build && nodemon src/index.ts",
-    "test": "npm run build && jasmine"
+    "test": "npm run build && jasmine",
+    "database-init": "nodemon src/utilities/database/initial-database/database-init.ts",
+    "setup": "npm i --save && npm i --save-dev && npm run database-init && "
   },
   "repository": {
     "type": "git",
