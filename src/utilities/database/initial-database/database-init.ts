@@ -40,6 +40,8 @@ const runSqlFile = (filePath:string, fileName: string) => {
     if (numberOfError == 0) {
         console.log("Database initialised successfully!");
     }
+
+    databaseConnection.end();
 };
 
 const testQuery = ():void => {
@@ -54,18 +56,22 @@ const testQuery = ():void => {
     const databaseConnection = mysql.createConnection(databaseConfig);
 
     // databaseConnection.query(`USE DATABASE ${databaseConfig.database}`);
-    databaseConnection.query("SELECT username FROM User_Account", (error, result, field) => {
+    databaseConnection.query("SELECT username FROM User_Account WHERE username = ?",["admin"], (error, result, field) => {
         if (error) {
             console.log(error.message);
             return;
         }
-        console.log(result);
+        if (result[0].username === "admin") {
+            console.log("Database connected successfully!"); 
+        }
     });
 
     databaseConnection.end();
 };
 
 runSqlFile(filePath, sqlFileName);
+
+// Send a test query to database, to test the database connection
 setTimeout(() => {
     testQuery();
 }, 2000);

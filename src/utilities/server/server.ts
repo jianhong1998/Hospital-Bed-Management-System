@@ -1,12 +1,15 @@
+import bodyParser from 'body-parser';
 import express from 'express';
 import path from 'path';
 import buildRouter from './router/build-router';
-import fetchDatabaseRouter from './router/fetch-database';
-
+import fetchDatabaseRouter from './router/fetch-data-from-database';
 
 const server = express();
 const currentFolder = path.join(__dirname);
 const loginFilePath = "../../view/";
+
+server.use(bodyParser.urlencoded({extended: false}));
+server.use(bodyParser.json());
 
 // Visit homepage
 server.get("/", (req, res) => {

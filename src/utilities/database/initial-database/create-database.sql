@@ -19,4 +19,4 @@ INSERT INTO User_Account
 VALUES(NULL, "admin", "Admin", "", "123", "Adminstrator");
 
 INSERT INTO User_Account
-VALUES(NULL, "jianhong", "Jian Hong", "Lee", "yilei1998", "Developer");
+VALUES(NULL, "jianhong", "Jian Hong", "Lee", "123", "Developer");
