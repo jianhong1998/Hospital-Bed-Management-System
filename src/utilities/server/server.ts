@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import path from 'path';
 import buildRouter from './router/build-router';
-import fetchDatabaseRouter from './router/fetch-data-from-database';
+import loginFetchDataRouter from './router/login-fecth-data';
 
 const server = express();
 const currentFolder = path.join(__dirname);
@@ -41,6 +41,6 @@ server.use("/view", express.static(path.join(currentFolder, loginFilePath)));
 server.use("/script", buildRouter);
 
 // Fetch data from database, visit "http://[host]:[port]/fetch/[route]"
-server.use('/fetch', fetchDatabaseRouter);
+server.use('/fetch', loginFetchDataRouter);
 
 export default server;

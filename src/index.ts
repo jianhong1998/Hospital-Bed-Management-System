@@ -11,15 +11,21 @@ databaseConnection.connect((error):void => {
         return;
     }
 
-    console.log("database is connected");
+    console.log("Database is connected");
 });
 
-setTimeout(() => {
-    if (isDatabaseConneted) {
-        const port = 8080;
-        const hostAddress = "localhost";
+setTimeout(
+    () => {
+        if (isDatabaseConneted) {
+            const port = 8080;
+            const hostAddress = "localhost";
 
-        server.listen(port, hostAddress, () => {
-        console.log(`Server is running on http://${hostAddress}:${port}`);
-    });
-}}, 1000);
+            server.listen(port, hostAddress, () => {
+                console.log(`Server is running on http://${hostAddress}:${port}`);
+            });
+        } else {
+            console.log('Server is failed for running');
+        }
+    },
+    1000
+);

@@ -1,10 +1,10 @@
 import databaseConnection from "../../database/database-connection";
 import {Router} from 'express';
 
-const fetchDatabaseRouter = Router();
+const loginFetchDataRouter = Router();
 
 // Login POST request handler
-fetchDatabaseRouter.post("/send-login-info", (req, res) => {
+loginFetchDataRouter.post("/send-login-info", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
@@ -12,7 +12,7 @@ fetchDatabaseRouter.post("/send-login-info", (req, res) => {
         return res.send({errorMessage: "Please include username and password in GET request"});
     }
 
-    const sqlQuery = 'SELECT user_id, username, first_name, last_name FROM User_Account WHERE username = ? AND password = ?;';
+    const sqlQuery = 'SELECT user_id, username, first_name, last_name FROM User_Account WHERE BINARY username = ? AND BINARY password = ?;';
     
     databaseConnection.query(sqlQuery, [username, password], (error, result, fields) => {
         if (error) {
@@ -29,4 +29,4 @@ fetchDatabaseRouter.post("/send-login-info", (req, res) => {
     });
 });
 
-export default fetchDatabaseRouter;
+export default loginFetchDataRouter;

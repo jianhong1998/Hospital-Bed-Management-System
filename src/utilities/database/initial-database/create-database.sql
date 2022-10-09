@@ -15,8 +15,15 @@ CREATE TABLE User_Account(
     CONSTRAINT User_AK_username UNIQUE(username)
 );
 
+-- Example Data Insert
 INSERT INTO User_Account
-VALUES(NULL, "admin", "Admin", "", "123", "Adminstrator");
+VALUES(101, "admin", "Admin", "", "123", "Admin");
 
 INSERT INTO User_Account
-VALUES(NULL, "jianhong", "Jian Hong", "Lee", "123", "Developer");
+VALUES (NULL, "jianhong", "Jian Hong", "Lee", "Abc", "Developer");
+
+INSERT INTO User_Account
+VALUES (NULL, "andreiwong", "Andrei", "Wong", "QWE123", "Registration Crew");
+
+INSERT INTO User_Account
+VALUES (NULL, "andy", "Andy", "Lee", "QWERTY", "Admin");

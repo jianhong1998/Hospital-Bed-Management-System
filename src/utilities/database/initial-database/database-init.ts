@@ -62,7 +62,7 @@ const testQuery = ():void => {
             return;
         }
         if (result[0].username === "admin") {
-            console.log("Database connected successfully!"); 
+            console.log("Database connected successfully!\nYou may run command 'npm start' to start server"); 
         }
     });
 
