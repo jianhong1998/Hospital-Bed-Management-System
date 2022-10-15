@@ -1,11 +1,12 @@
 import mysql, { ConnectionConfig } from 'mysql';
+import databaseInfo from './database-info.json';
 
 const databaseConfig:ConnectionConfig = {
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "root",
-    database: "HBM_System"
+    host: databaseInfo.host,
+    port: databaseInfo.port,
+    user: databaseInfo.user,
+    password: databaseInfo.password,
+    database: databaseInfo.database
 };
 
 const databaseConnection = mysql.createConnection(databaseConfig);
