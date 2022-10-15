@@ -18,46 +18,103 @@ CREATE TABLE User_Account(
 
 CREATE TABLE Ward(
 	ward_id			INT AUTO_INCREMENT,
-    ward_type		ENUM("General_Ward", "Infectious_DiseaseWard", "Intensive_Care_Ward"),
-    current_status	ENUM("Occupied", "Available", "Discharged_Pending_Sanitizing", "Sanitizing"),
+    ward_type		ENUM("General Ward", "Infectious Disease Ward", "Intensive Care Ward"),
+    current_status	ENUM("Occupied", "Discharged Pending Sanitizing", "Sanitizing", "Available"),
     patient_id		INT,
     CONSTRAINT Ward_PK PRIMARY KEY (ward_id)
 );
 
 
 
--- Example Data Insert
+-- User Account
 INSERT INTO User_Account
 VALUES(101, "admin", "Admin", "", "123", "Admin");
 
 INSERT INTO User_Account
-VALUES (NULL, "jianhong", "Jian Hong", "Lee", "Abc", "Developer");
+VALUES (NULL, "jianhong", "Jian Hong", "Lee", "QWE123", "Reception Crew");
 
-INSERT INTO User_Account
-VALUES (NULL, "andreiwong", "Andrei", "Wong", "QWE123", "Registration Crew");
+-- General Ward
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (1, "available", null);
 
-INSERT INTO User_Account
-VALUES (NULL, "andy", "Andy", "Lee", "QWERTY", "Admin");
+-- Intensive Care Ward
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
+INSERT INTO Ward (ward_type, current_status, patient_id)
+VALUES (3, "available", null);
 
+-- Infectious Disease Ward
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
+VALUES (2, "available", null);
 INSERT INTO Ward (ward_type, current_status, patient_id)
-VALUES (1, 1, null);
-
-SELECT * FROM Ward WHERE ward_id = 1;
+VALUES (2, "available", null);
