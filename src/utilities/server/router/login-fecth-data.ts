@@ -4,12 +4,12 @@ import {Router} from 'express';
 const loginFetchDataRouter = Router();
 
 // Login POST request handler
-loginFetchDataRouter.post("/send-login-info", (req, res) => {
+loginFetchDataRouter.post("/", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
     if (username === undefined || password === undefined) {
-        return res.send({errorMessage: "Please include username and password in GET request"});
+        return res.send({errorMessage: "Please include username and password in POST request"});
     }
 
     const sqlQuery = 'SELECT user_id, username, first_name, last_name FROM User_Account WHERE BINARY username = ? AND BINARY password = ?;';
