@@ -35,10 +35,17 @@ server.get("/login", (req, res) => {
     res.sendFile(path.join(currentFolder, loginHtmlFilePath, loginHtmlFileName));
 });
 
-// Access .css from visit "http://[host]:[port]/view/[filePath]/[fileName]"
+// Visit patient registration page
+server.get("/patient", (req, res) => {
+    const patientHtmlFileName = "patient-register.html";
+    const patientHtmlFilePath = "../../view/patient-register";
+    res.sendFile(path.join(currentFolder, patientHtmlFilePath, patientHtmlFileName));
+});
+
+// Access .html and .css files from visit "http://[host]:[port]/view/[filePath]/[fileName]"
 server.use("/view", express.static(path.join(currentFolder, loginFilePath)));
 
-// Access .js file from visit "http://[host]:[port]/script/[filePath]/[fileName]"
+// Access .js files from visit "http://[host]:[port]/script/[filePath]/[fileName]"
 server.use("/script", buildRouter);
 
 // Fetch data from database, visit "http://[host]:[port]/fetch/[route]"

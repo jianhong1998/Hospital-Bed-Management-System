@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://localhost:8080/view/patient-register/patient-register.css">
+        <script src="http://localhost:8080/script/homepage/check-login-status.js"></script>
+        <title>HBM System</title>
+    </head>
+    <body>
+        <nav>
+            <button id="button-back-to-dashboard">Back to Dashboard</button>
+        </nav>
+        <section>
+            <!-- Form Container -->
+            <div id="container-form-patient-register">
+                <form id="form-patient-register">
+                    <h3>Patient register</h3>
+                    <input type="checkbox" name="isNewPatient" id="input-isnewpatient" checked>
+                    <label for="input-isnewpatient">
+                        Is new patient
+                    </label>
+                    <br>
+                    <input type="text" name="nric" id="input-nric" placeholder="NRIC" required>
+                    <br>
+                    <input type="text" name="firstName" id="input-firstname" placeholder="First Name" required>
+                    <br>
+                    <input type="text" name="lastName" id="input-lastname" placeholder="Last Name" required>
+                    <br>
+                    <input type="tel" name="contactNumber" id="input-contactnumber" placeholder="contactNumber" required>
+                    <br>
+                    <input type="date" name="dateOfBirth" id="input-dateofbirth" placeholder="Date of Birth" required>
+                    <br>
+                    <select name="gender" id="input-gender">
+                        <option value="0">-- Please select patient's gender --</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                    <br>
+                    <select name="category" id="input-category">
+                        <option value="0">-- Please select patient's category --</option>
+                        <option value="1">Intensive Care</option>
+                        <option value="2">Infectious Disease</option>
+                        <option value="3">General Care</option>
+                    </select>
+                    <br>
+                    <input type="text" name="remarks" id="input-remarks" placeholder="Remarks">
+                    <br>
+                    <input type="submit" value="Register" id="submit-button-patient-register-form">
+                    <button id="button-clear-form">Clear</button>
+                </form>
+            </div>
+            <!-- Patient Detail Table Container -->
+            <div id="container-table-patient-info-display">
+                <table id="table-patient-info-display">
+                    <caption>
+                        Patient Info
+                    </caption>
+                    <tr>
+                        <td>
+                            Patient Id
+                        </td>
+                        <td id="patient-id" class="patient-info-content"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            First Name
+                        </td>
+                        <td id="first-name" class="patient-info-content"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Name
+                        </td>
+                        <td id="last-name" class="patient-info-content"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Gender
+                        </td>
+                        <td id="gender" class="patient-info-content"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Category
+                        </td>
+                        <td id="category" class="patient-info-content"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Contact Number
+                        </td>
+                        <td id="contact-number" class="patient-info-content"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date Of Birth
+                        </td>
+                        <td id="date-of-birth" class="patient-info-content"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Remarks
+                        </td>
+                        <td id="remarks" class="patient-info-content"></td>
+                    </tr>
+                </table>
+                <br>
+                <button id="button-confirm-and-assign-ward" class="patient-info-content">Confirm & Assign Ward</button>
+            </div>
+        </section>
+
+        <script src="http://localhost:8080/script/patient-register/patient-management/patient.js"></script>
+        <script src="http://localhost:8080/script/patient-register/patient-management/patient-register-process.js"></script>
+        <script src="http://localhost:8080/script/patient-register/queue-management/queue.js"></script>
+        <script src="http://localhost:8080/script/patient-register/queue-management/queue-process.js"></script>
+        <script src="http://localhost:8080/script/patient-register/html-control.js"></script>
+    </body>
+    
+</html>

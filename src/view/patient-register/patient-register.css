@@ -1,0 +1,23 @@
+section {
+    border: solid black 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#container-form-patient-register {
+    border: dotted black 4px;
+    margin: 10px;
+    padding: 10px;
+}
+
+#table-patient-info-display {
+    display: none;
+}
+
+#button-confirm-and-assign-ward {
+    display: none;
+}
+
+th, tr, td {
+    border: solid black 1px;
+}

@@ -1,4 +1,8 @@
-const verifyWardStatusAndPatientId = (wardStatus: WardStatus, patientId:(number | undefined | null)):boolean => {
+// import wardFunction from "./ward-function";
+// import wardDisplay1 from "./ward-display";
+// import { WardStatus } from "./ward-enum";
+
+const verifyWardStatusAndPatientId = (wardStatus:WardStatus, patientId:(number | undefined | null)):boolean => {
     if (wardStatus > 1 && wardStatus <= 4) {
         return true;
     }
@@ -38,6 +42,7 @@ const dischargeWard = (wardId: number):void => {
             () => {
                 changeWardStatus(wardId, WardStatus.AVAILABLE, null);
                 refreshWardData(wardId);
+                assignWardService();
             },
             (minutes * 60 + seconds) * 1000
         );
@@ -45,3 +50,8 @@ const dischargeWard = (wardId: number):void => {
         alert(error);
     }
 };
+
+// export default {
+//     verifyWardStatusAndPatientId,
+//     dischargeWard
+// };

@@ -1,22 +1,8 @@
-interface Ward {
-    wardId: number;
-    wardType: WardType;
-    currentStatus: WardStatus;
-    patientId: (number | null);
-};
+// import wardDisplay from './ward-display';
+// import wardDischarge from './ward-discharge';
+// import Ward from './ward-interface';
+// import { WardStatus, WardType } from './ward-enum';
 
-enum WardType {
-    INTENSIVE_CARE_WARD = 3,
-    INFECTIOUS_DISEASE_WARD = 2,
-    GENERAL_WARD = 1
-};
-
-enum WardStatus {
-    OCCUPIED = 1,
-    DISCHARGED_PENDING_SANITIZING = 2,
-    SANITIZING = 3,
-    AVAILABLE = 4
-};
 
 const fetchAllWardsData = async ():Promise<Ward[]> => {
     const wardArray:Array<Ward> = [];
@@ -26,7 +12,7 @@ const fetchAllWardsData = async ():Promise<Ward[]> => {
         const data = await response.json();
 
         if (data.length === 0) {
-            return Promise.reject("No ward data is available");
+            return Promise.reject({errorMessage: "No ward data is available"});
         }
 
         for (let i = 0 ; i < data.length; i++) {
@@ -38,7 +24,8 @@ const fetchAllWardsData = async ():Promise<Ward[]> => {
             });
         }
     } catch (error) {
-        return Promise.reject(<string>error);
+        const errorMessage = ((error as unknown) as Error).message;
+        return Promise.reject({errorMessage});
     }
 
     return Promise.resolve(wardArray);
@@ -79,7 +66,7 @@ const fetchWardData = async (wardId:number):Promise<Ward> => {
         const responseDataArray:dataSetFromDatabase[] = await response.json();
 
         if (responseDataArray.length === 0) {
-            return Promise.reject("Ward is not found");
+            return Promise.reject({errorMessage: "Ward is not found"});
         }
 
         const responseData = responseDataArray[0];
@@ -89,7 +76,8 @@ const fetchWardData = async (wardId:number):Promise<Ward> => {
         ward.currentStatus = responseData.current_status;
         ward.patientId = responseData.patient_id;
     } catch (error) {
-        return Promise.reject(error);
+        const errorMessage = ((error as unknown) as Error).message;
+        return Promise.reject({errorMessage});
     }
 
     return Promise.resolve(ward);
@@ -97,7 +85,7 @@ const fetchWardData = async (wardId:number):Promise<Ward> => {
 
 const changeWardStatus = async (wardId:number, wardStatus:WardStatus, patientId:(number|null|undefined)):Promise<any> => {
     if (!verifyWardStatusAndPatientId(wardStatus, patientId)) {
-        return Promise.reject("patientId must not be NULL or UNDEFINED while wardStatus is 1 (occupied)");
+        return Promise.reject({errorMessage: "patientId must not be NULL or UNDEFINED when setting wardStatus to 1 (occupied)"});
     }
 
     const fetchUrl = 'http://localhost:8080/fetch/ward/set-ward-status';
@@ -119,5 +107,26 @@ const changeWardStatus = async (wardId:number, wardStatus:WardStatus, patientId:
         body: JSON.stringify(requestBody)
     });
 
-    return Promise.resolve(response.json());
+    return Promise.resolve(await response.json());
 };
+
+const calculateOccupiedWard = () => {
+    refreshAllWardData();
+    
+    let totalNumber = 0;
+
+    for (let ward of wardArray) {
+        if (ward.currentStatus.toString().toLowerCase() === "occupied") {
+            totalNumber++;
+        }
+    }
+
+    return totalNumber;
+}
+
+// export default {
+//     fetchAllWardsData,
+//     getWardIndexInArray,
+//     fetchWardData,
+//     changeWardStatus
+// }

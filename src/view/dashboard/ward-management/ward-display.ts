@@ -1,3 +1,8 @@
+// import wardDischarge from "./ward-discharge";
+// import wardFunction from "./ward-function";
+// import Ward from "./ward-interface";
+
+
 const wardArray:Array<Ward> = [];
 
 const displayWardData = async ():Promise<void> => {
@@ -5,7 +10,8 @@ const displayWardData = async ():Promise<void> => {
         const response = await fetchAllWardsData();
         wardArray.push(...response);
     } catch (error) {
-        console.log(error);
+        const errorMessage = ((error as unknown) as {errorMessage: string}).errorMessage;
+        alert(errorMessage);
         return;
     }
     
@@ -54,47 +60,58 @@ const displayWardData = async ():Promise<void> => {
 };
 
 const refreshWardData = async (wardId:number):Promise<void> => {
-    const wardDetailContainer = <HTMLDivElement>document.getElementById(`ward-${wardId}`);
+    try {
+        const wardDetailContainer = <HTMLDivElement>document.getElementById(`ward-${wardId}`);
 
-    const wardIndex = getWardIndexInArray(wardId);
+        const wardIndex = getWardIndexInArray(wardId);
 
-    const fetchedWard = await fetchWardData(wardId);
+        const fetchedWard = await fetchWardData(wardId);
 
-    if (fetchedWard.wardId !== wardArray[wardIndex].wardId) {
-        console.log(fetchedWard);
-        return Promise.reject("Wrong ward fetched from database");
+        if (fetchedWard.wardId !== wardArray[wardIndex].wardId) {
+            console.log(fetchedWard);
+            return Promise.reject("Wrong ward fetched from database");
+        }
+
+        wardArray[wardIndex].currentStatus = fetchedWard.currentStatus;
+        wardArray[wardIndex].patientId = fetchedWard.patientId;
+
+        wardDetailContainer.children[2].innerHTML = `Ward Status: ${wardArray[wardIndex].currentStatus}`;
+        wardDetailContainer.children[3].innerHTML = `Patient Id: ${wardArray[wardIndex].patientId === null? "-" : wardArray[wardIndex].patientId}`;
+    } catch (error) {
+        const errorMessage = ((error as unknown) as {errorMessage: string}).errorMessage;
+        return Promise.reject({errorMessage});
     }
-
-    wardArray[wardIndex].currentStatus = fetchedWard.currentStatus;
-    wardArray[wardIndex].patientId = fetchedWard.patientId;
-
-    wardDetailContainer.children[2].innerHTML = `Ward Status: ${wardArray[wardIndex].currentStatus}`;
-    wardDetailContainer.children[3].innerHTML = `Patient Id: ${wardArray[wardIndex].patientId === null? "-" : wardArray[wardIndex].patientId}`;
+    
 };
 
-const addDischargeFunctionToButton = ():void => {
-    const dischargeButtonArray = <HTMLCollectionOf<HTMLButtonElement>>document.getElementsByClassName("discharge-button");
-    for (let i = 0; i < dischargeButtonArray.length ; i++) {
-        dischargeButtonArray[i].addEventListener("click", () => {
-            const parent = <HTMLDivElement>dischargeButtonArray[i].parentElement;
-            const wardIdContainer = parent.children[0];
-            const wardId = parseInt(wardIdContainer.innerHTML.charAt(wardIdContainer.innerHTML.length - 1));
+const refreshAllWardData = async ():Promise<void> => {
+    let errorMessage:string = "";
+    
+    for (let i = 0; i < wardArray.length; i++) {
+        await refreshWardData(wardArray[i].wardId)
+        .catch((error) => {
+            let message = ((error as unknown) as {errorMessage: string}).errorMessage;
             
-            dischargeWard(wardId);
+            if (message.toLowerCase().includes("failed to fetch")) {
+                message = "Server is no response, please try again after 3 seconds.";
+            }
+            
+            if (!errorMessage.includes(message)) {
+                errorMessage += message + "\n";
+            }
         });
     }
-};
 
-const refreshAllWardData = () => {
-    for (let i = 0; i < wardArray.length; i++) {
-        refreshWardData(wardArray[i].wardId);
+    if (errorMessage.length > 0) {
+        alert(errorMessage);
     }
 };
 
-window.addEventListener("load",displayWardData);
 
-setTimeout(
-    () => addDischargeFunctionToButton(),
-    2000
-);
-
+// export default {
+//     wardArray,
+//     displayWardData,
+//     refreshWardData,
+//     addDischargeFunctionToButton,
+//     refreshAllWardData
+// };

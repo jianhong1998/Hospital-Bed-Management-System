@@ -1,12 +1,12 @@
 import mysql, { ConnectionConfig } from 'mysql';
-import databaseInfo from './database-info.json';
+import serverDatabaseInfo from '../server-database-info.json';
 
 const databaseConfig:ConnectionConfig = {
-    host: databaseInfo.host,
-    port: databaseInfo.port,
-    user: databaseInfo.user,
-    password: databaseInfo.password,
-    database: databaseInfo.database
+    host: serverDatabaseInfo.databaseInfo.host,
+    port: serverDatabaseInfo.databaseInfo.port,
+    user: serverDatabaseInfo.databaseInfo.user,
+    password: serverDatabaseInfo.databaseInfo.password,
+    database: serverDatabaseInfo.databaseInfo.database
 };
 
 const databaseConnection = mysql.createConnection(databaseConfig);
