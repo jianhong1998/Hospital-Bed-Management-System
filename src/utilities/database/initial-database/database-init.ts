@@ -1,7 +1,7 @@
-import fs, {promises as fsPromises} from "fs";
+import fs from "fs";
 import path from "path";
 import mysql from "mysql";
-import databaseInfo from '../database-info.json';
+import serverDatabaseInfo from "../../server-database-info.json";
 
 const filePath = "./src/utilities/database/initial-database/";
 const sqlFileName = "create-database.sql";
@@ -9,10 +9,14 @@ const sqlFileName = "create-database.sql";
 
 const runSqlFile = (filePath:string, fileName: string) => {
     const databaseConfig: mysql.ConnectionConfig = {
-        host: databaseInfo.host,
-        port: databaseInfo.port,
-        user: databaseInfo.user,
-        password: databaseInfo.password
+        // host: "localhost",
+        // port: 3306,
+        // user: "root",
+        // password: "root"
+        host: serverDatabaseInfo.databaseInfo.host,
+        port: serverDatabaseInfo.databaseInfo.port,
+        user: serverDatabaseInfo.databaseInfo.user,
+        password: serverDatabaseInfo.databaseInfo.password
     };
     
     const databaseConnection = mysql.createConnection(databaseConfig);
@@ -47,11 +51,16 @@ const runSqlFile = (filePath:string, fileName: string) => {
 
 const testQuery = ():void => {
     const databaseConfig: mysql.ConnectionConfig = {
-        host: databaseInfo.host,
-        port: databaseInfo.port,
-        user: databaseInfo.user,
-        password: databaseInfo.password,
-        database: databaseInfo.database
+        // host: "localhost",
+        // port: 3306,
+        // user: "root",
+        // password: "root",
+        // database: "HBM_System"
+        host: serverDatabaseInfo.databaseInfo.host,
+        port: serverDatabaseInfo.databaseInfo.port,
+        user: serverDatabaseInfo.databaseInfo.user,
+        password: serverDatabaseInfo.databaseInfo.password,
+        database: serverDatabaseInfo.databaseInfo.database
     };
     
     const databaseConnection = mysql.createConnection(databaseConfig);

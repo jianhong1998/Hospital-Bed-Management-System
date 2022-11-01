@@ -6,18 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost:8080/view/dashboard/dashboard.css">
     <script src="http://localhost:8080/script/homepage/check-login-status.js"></script>
-    <title>HBS System Dashboard</title>
+    <title>HBS System</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
-    <h2>Hi <span id="name-display"></span>, Welcome to Hospital Bed Management System</h2>
-    <div id="ward-container">
-        <button onclick="refreshAllWardData()">Refresh All Wards</button>
-    </div>
-    <script src="http://localhost:8080/script/dashboard/name-display.js"></script>
-    <script src="http://localhost:8080/script/dashboard/ward-management/ward.js"></script>
+    <header>
+        <h1>Dashboard</h1>
+        <h2>Hi <span id="name-display"></span>, Welcome to Hospital Bed Management System</h2>
+        <button id="patient-redirect-button" onclick="redirectToOtherPage('http://localhost:8080/patient/')">Patient Management</button>
+    </header>
+
+    <section>
+        <button id="button-refresh-all-wards" onclick="refreshAllWardData()">Refresh All Wards</button>
+        <div id="ward-container"></div>
+        <div id="patient-info-container">
+            <table id="table-patient-info-display">
+                <caption>
+                    Patient Info
+                </caption>
+                <tr>
+                    <td>
+                        Patient Id
+                    </td>
+                    <td id="patient-id" class="patient-info-content"></td>
+                </tr>
+                <tr>
+                    <td>
+                        First Name
+                    </td>
+                    <td id="first-name" class="patient-info-content"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name
+                    </td>
+                    <td id="last-name" class="patient-info-content"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender
+                    </td>
+                    <td id="gender" class="patient-info-content"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Category
+                    </td>
+                    <td id="category" class="patient-info-content"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Contact Number
+                    </td>
+                    <td id="contact-number" class="patient-info-content"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Date Of Birth
+                    </td>
+                    <td id="date-of-birth" class="patient-info-content"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Remarks
+                    </td>
+                    <td id="remarks" class="patient-info-content"></td>
+                </tr>
+            </table>
+            <br>
+            <button id="button-close-patient-info-container">Close</button>
+        </div>
+    </section>
+    
+    <footer>
+        <div id="time-container"></div>
+    </footer>
+
+    <!-- User Info Management -->
+    <script src="http://localhost:8080/script/dashboard/user-name-display.js"></script>
+    
+    <!-- Ward Management -->
+    <script src="http://localhost:8080/script/dashboard/ward-management/ward-interface.js"></script>
+    <script src="http://localhost:8080/script/dashboard/ward-management/ward-enum.js"></script>
+    <script src="http://localhost:8080/script/dashboard/ward-management/ward-function.js"></script>
     <script src="http://localhost:8080/script/dashboard/ward-management/ward-display.js"></script>
     <script src="http://localhost:8080/script/dashboard/ward-management/ward-occupy.js"></script>
     <script src="http://localhost:8080/script/dashboard/ward-management/ward-discharge.js"></script>
+    
+    <!-- Patient Management -->
+    <script src="http://localhost:8080/script/dashboard/patient-data/patient-data.js"></script>
+    <script src="http://localhost:8080/script/patient-register/patient-management/patient.js"></script>
+    <script src="http://localhost:8080/script/patient-register/patient-management/patient-register-process.js"></script>
+
+    <!-- Queue Management -->
+    <script src="http://localhost:8080/script/patient-register/queue-management/queue.js"></script>
+    <script src="http://localhost:8080/script/patient-register/queue-management/queue-process.js"></script>
+    
+    <!-- Embeded Script -->
+    <script>
+        const redirectToOtherPage = (url) => {
+            window.location.replace(url);
+        };
+    </script>
+    
+    <!-- HTML Control Script -->
+    <script src="http://localhost:8080/script/dashboard/html-control.js"></script>
 </body>
 </html>
