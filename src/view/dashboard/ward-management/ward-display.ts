@@ -15,7 +15,7 @@ const displayWardData = async ():Promise<void> => {
         return;
     }
     
-    const wardContainer = <HTMLDivElement>document.getElementById("ward-container");
+    const wardContainer = <HTMLDivElement>document.getElementById("ward-info-container");
 
     for (let i = 0 ; i < wardArray.length; i++) {
         const containerDivNode = document.createElement("div");

@@ -119,6 +119,8 @@ const assignWardService = async ():Promise<void> => {
                 );
             }
         }
+
+        await displayAllNumbers(await getAllNumbers());
     } catch (error) {
         if (Object.keys(error as {errorMessage:string}).includes("errorMessage")) {
             console.log((error as {errorMessage:string}).errorMessage);

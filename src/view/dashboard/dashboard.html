@@ -10,14 +10,66 @@
 </head>
 <body>
     <header>
-        <h1>Dashboard</h1>
         <h2>Hi <span id="name-display"></span>, Welcome to Hospital Bed Management System</h2>
         <button id="patient-redirect-button" onclick="redirectToOtherPage('http://localhost:8080/patient/')">Patient Management</button>
     </header>
 
     <section>
-        <button id="button-refresh-all-wards" onclick="refreshAllWardData()">Refresh All Wards</button>
-        <div id="ward-container"></div>
+        <div id="queue-container">
+            <div id="container-all-queue">
+                <div id="container-all-queue-header">
+                    <h4>
+                        Summary Dashboard
+                    </h4>
+                </div>
+                <div id="container-all-queue-body">
+                    <div class="queue-number-display-area">
+                        <div class="queue-number-display-area-title">
+                            Total Patient In Queue
+                        </div>
+                        <div id="container-total-patient-in-queue" class="number-container"></div>
+                    </div>
+                    <div class="queue-number-display-area">
+                        <div class="queue-number-display-area-title">
+                            General Ward
+                        </div>
+                        <div id="container-general-ward-queue" class="number-container"></div>
+                    </div>
+                    <div class="queue-number-display-area">
+                        <div class="queue-number-display-area-title">
+                            Intensive Care Ward
+                        </div>
+                        <div id="container-intensive-care-queue" class="number-container"></div>
+                    </div>
+                    <div class="queue-number-display-area">
+                        <div class="queue-number-display-area-title">
+                            Infectious Disease Ward
+                        </div>
+                        <div id="container-infectious-disease-queue" class="number-container"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="container-other-info">
+                <div class="queue-number-display-area">
+                    <div class="queue-number-display-area-title">
+                        Total Occupied Wards
+                    </div>
+                    <div id="container-total-patient-in-ward" class="number-container">
+                        <span id="total-patient-in-ward"></span> / <span id="total-ward"></span>
+                    </div>
+                </div>
+                <div class="queue-number-display-area">
+                    <div class="queue-number-display-area-title">
+                        Patient admission for today
+                    </div>
+                    <div id="container-total-patient-admission" class="number-container"></div>
+                </div>
+            </div>
+        </div>
+        <div id="ward-container">
+            <button id="button-refresh-all-wards" onclick="refreshAllWardData()">Refresh All Wards</button>
+            <div id="ward-info-container"></div>
+        </div>
         <div id="patient-info-container">
             <table id="table-patient-info-display">
                 <caption>
@@ -100,6 +152,7 @@
     <!-- Queue Management -->
     <script src="http://localhost:8080/script/patient-register/queue-management/queue.js"></script>
     <script src="http://localhost:8080/script/patient-register/queue-management/queue-process.js"></script>
+    <script src="http://localhost:8080/script/dashboard/queue-management/queue-display.js"></script>
     
     <!-- Embeded Script -->
     <script>

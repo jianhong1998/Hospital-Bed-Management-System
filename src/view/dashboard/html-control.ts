@@ -3,7 +3,7 @@
 window.addEventListener("load", async () => {
     await displayWardData();
     await getAllQueueData();
-    console.log(queueArray);
+    await displayAllNumbers(await getAllNumbers());
     await assignWardService();
 });
 
@@ -58,7 +58,7 @@ const displayPatientInfo = async (patientId: number):Promise<void> => {
 
         // Hide ward display block
         const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh-all-wards");
-        const wardContainer = <HTMLDivElement> document.getElementById("ward-container");
+        const wardContainer = <HTMLDivElement> document.getElementById("ward-info-container");
 
         refreshAllWardsButton.style.display = "none";
         wardContainer.style.display = "none";
@@ -107,7 +107,7 @@ const closePatientInfoContainer = ():void => {
     const displayTable = <HTMLTableElement> document.getElementById("table-patient-info-display");
     const container = <HTMLDivElement> displayTable.parentElement;
     const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh-all-wards");
-    const wardContainer = <HTMLDivElement> document.getElementById("ward-container");
+    const wardContainer = <HTMLDivElement> document.getElementById("ward-info-container");
 
     clearPatientInfoTable();
 
@@ -146,9 +146,9 @@ setTimeout(
 );
 
 
-// Assign patient to ward every 30 seconds
+// Assign patient to ward and update Summary Dashboard every 30 seconds
 setInterval(
-    () => {
+    async () => {
         assignWardService();
     },
     10000

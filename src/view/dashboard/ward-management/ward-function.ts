@@ -110,19 +110,29 @@ const changeWardStatus = async (wardId:number, wardStatus:WardStatus, patientId:
     return Promise.resolve(await response.json());
 };
 
-const calculateOccupiedWard = () => {
-    refreshAllWardData();
-    
-    let totalNumber = 0;
-
-    for (let ward of wardArray) {
-        if (ward.currentStatus.toString().toLowerCase() === "occupied") {
-            totalNumber++;
+const calculateOccupiedWard = async ():Promise<number> => {
+    try {
+        const fetchUrl = "http://localhost:8080/fetch/ward/total-occupied-ward";
+        const response = await fetch(fetchUrl);
+        const data = await response.json();
+        return data.totalOccupiedWard;
+    } catch (error) {
+        if (Object.keys(error as {errorMessage:string}).includes("errorMessage")) {
+            return Promise.reject((error as {errorMessage:string}));
         }
-    }
 
-    return totalNumber;
-}
+        if (Object.getPrototypeOf(error).name === "TypeError") {
+            
+            if ((error as TypeError).message.toLowerCase().includes("failed to fetch")) {
+                return Promise.reject({errorMessage: "Error: No response from backend server. Failed to execute assignWardService()."});
+            }
+            
+            return Promise.reject({errorMessage: (error as TypeError).message});
+        }
+
+        return Promise.reject({errorMessage: error});
+    }
+};
 
 // export default {
 //     fetchAllWardsData,

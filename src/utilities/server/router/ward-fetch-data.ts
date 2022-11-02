@@ -20,7 +20,7 @@ wardFetchDataRouter.get("/all-ward", (req, res) => {
             1000
         );
     })
-})
+});
 
 // get specified ward data
 wardFetchDataRouter.get("/ward", (req, res) => {
@@ -41,7 +41,7 @@ wardFetchDataRouter.get("/ward", (req, res) => {
             1000
         );
     });
-})
+});
 
 // SET ward status
 wardFetchDataRouter.post("/set-ward-status", (req, res) => {
@@ -92,6 +92,18 @@ wardFetchDataRouter.post("/set-ward-status", (req, res) => {
     //         1000
     //     );
     // })
-})
+});
+
+wardFetchDataRouter.get("/total-occupied-ward", (req, res) => {
+    const sqlQuery = "SELECT COUNT(*) AS 'totalOccupiedWard' FROM Ward WHERE current_status = 'Occupied';";
+    databaseConnection.query(sqlQuery, (error , result , fields ) => {
+        if (error) {
+            res.send(error.message);
+            return;
+        }
+
+        res.send(result[0]);
+    });
+});
 
 export default wardFetchDataRouter;
