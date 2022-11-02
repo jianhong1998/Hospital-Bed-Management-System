@@ -146,10 +146,11 @@ setTimeout(
 );
 
 
-// Assign patient to ward and update Summary Dashboard every 30 seconds
+// Assign patient to ward and update Summary Dashboard every 10 seconds
 setInterval(
     async () => {
-        assignWardService();
+        await assignWardService();
+        await displayAllNumbers(await getAllNumbers());
     },
     10000
 );
