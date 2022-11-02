@@ -159,4 +159,3 @@ INSERT INTO Patient(firstName, lastName, gender, category, contactNumber, dateOf
 VALUES("JIAN HENG", "LEE", 1, 1, 99998888, "2003-05-22", "T0399200B", "");
 
 SELECT * FROM Patient_Queue ORDER BY timeIn;
-SELECT COUNT(*) AS "totalOccupiedWard" FROM Ward WHERE current_status = "Occupied";

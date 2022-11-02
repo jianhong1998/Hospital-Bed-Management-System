@@ -5,16 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost:8080/view/dashboard/dashboard.css">
+    <link rel="stylesheet" href="http://localhost:8080/view/dashboard/dashboard-header.css">
+    <link rel="stylesheet" href="http://localhost:8080/view/general-style.css">
     <script src="http://localhost:8080/script/homepage/check-login-status.js"></script>
-    <title>HBS System</title>
+    <title>HBM System</title>
 </head>
 <body>
+    <!-- <div id="loading-board"></div> -->
     <header>
-        <h2>Hi <span id="name-display"></span>, Welcome to Hospital Bed Management System</h2>
-        <button id="patient-redirect-button" onclick="redirectToOtherPage('http://localhost:8080/patient/')">Patient Management</button>
+        <div id="header-logo">
+            HBM System
+        </div>
+        <div id="header-centre"></div>
+        <div id="header-user">
+            <div id="name-display"></div>
+            <div id="dropdown-container">
+                <a href="http://localhost:8080/login">
+                    <button id="logout-button">Logout</button>
+                </a>
+            </div>
+        </div>
     </header>
+    <button id="patient-redirect-button" onclick="redirectToOtherPage('http://localhost:8080/patient/')">Patient Management</button>
 
-    <section>
+    <!-- Summary Dashboard -->
+    <div>
         <div id="queue-container">
             <div id="container-all-queue">
                 <div id="container-all-queue-header">
@@ -66,8 +81,13 @@
                 </div>
             </div>
         </div>
+        <div id="container-refresh-button">
+            <button id="button-refresh" onclick="refreshAllWardData()">Refresh</button>
+        </div>
+    </div>
+
+    <section>
         <div id="ward-container">
-            <button id="button-refresh-all-wards" onclick="refreshAllWardData()">Refresh All Wards</button>
             <div id="ward-info-container"></div>
         </div>
         <div id="patient-info-container">
@@ -124,14 +144,9 @@
                     <td id="remarks" class="patient-info-content"></td>
                 </tr>
             </table>
-            <br>
             <button id="button-close-patient-info-container">Close</button>
         </div>
     </section>
-    
-    <footer>
-        <div id="time-container"></div>
-    </footer>
 
     <!-- User Info Management -->
     <script src="http://localhost:8080/script/dashboard/user-name-display.js"></script>

@@ -2,22 +2,43 @@ section {
     border: solid black 2px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
+/* Register form */
 #container-form-patient-register {
     border: dotted black 4px;
     margin: 10px;
     padding: 10px;
 }
 
-#table-patient-info-display {
+
+/* Table */
+#container-table-patient-info-display {
+    margin: 10px;
+    border: dotted black 4px;
+    padding: 10px;
+}
+
+#table-patient-info-display, #container-table-patient-info-display {
     display: none;
 }
 
 #button-confirm-and-assign-ward {
     display: none;
+    margin: 0 auto;
+}
+
+#table-patient-info-display > caption {
+    font-size: larger;
+    font-weight: bold;
 }
 
 th, tr, td {
     border: solid black 1px;
+}
+
+td {
+    padding: 3px 10px;
+    background-color: white;
 }

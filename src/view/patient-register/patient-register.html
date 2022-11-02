@@ -5,10 +5,26 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="http://localhost:8080/view/patient-register/patient-register.css">
+        <link rel="stylesheet" href="http://localhost:8080/view/general-style.css">
+        <link rel="stylesheet" href="http://localhost:8080/view/dashboard/dashboard-header.css">
         <script src="http://localhost:8080/script/homepage/check-login-status.js"></script>
         <title>HBM System</title>
     </head>
     <body>
+        <header>
+            <div id="header-logo">
+                HBM System
+            </div>
+            <div id="header-centre"></div>
+            <div id="header-user">
+                <div id="name-display"></div>
+                <div id="dropdown-container">
+                    <a href="http://localhost:8080/login">
+                        <button id="logout-button">Logout</button>
+                    </a>
+                </div>
+            </div>
+        </header>
         <nav>
             <button id="button-back-to-dashboard">Back to Dashboard</button>
         </nav>
@@ -116,6 +132,9 @@
         <script src="http://localhost:8080/script/patient-register/queue-management/queue.js"></script>
         <script src="http://localhost:8080/script/patient-register/queue-management/queue-process.js"></script>
         <script src="http://localhost:8080/script/patient-register/html-control.js"></script>
+
+        <!-- Username Info Management -->
+        <script src="http://localhost:8080/script/dashboard/user-name-display.js"></script>
     </body>
     
 </html>

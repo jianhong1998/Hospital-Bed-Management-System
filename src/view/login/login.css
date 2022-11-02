@@ -1,7 +1,35 @@
+/* Header */
+header {
+    width: 95%;
+    margin: 10vh auto 5vh auto;
+    text-align: center;
+    font-size: 55px;
+    font-weight: bolder;
+    color: #97e0c6;
+}
+
+/* Form */
+#login-form-container {
+    display: block;
+}
+
 form {
-    align-content: center;
-    justify-content: center;
+    display: block;
+    width: 250px;
     border: 2px black solid;
-    width: fit-content;
-    height: auto;
+    margin: 0 auto;
+    padding: 20px 50px;
+}
+
+form input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+}
+
+#input-submit {
+    display: block;
+    margin: 0 auto;
+    width: 20vw;
+    height: 5vh;
 }

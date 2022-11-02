@@ -55,6 +55,9 @@ const displayWardData = async ():Promise<void> => {
         }
 
         containerDivNode.appendChild(dischargeButtonNode);
+
+        manageWardStatusClass(i, containerDivNode);
+
         wardContainer.appendChild(containerDivNode);
     }
 };
@@ -72,11 +75,18 @@ const refreshWardData = async (wardId:number):Promise<void> => {
             return Promise.reject("Wrong ward fetched from database");
         }
 
+        if (fetchedWard.currentStatus === wardArray[wardIndex].currentStatus && fetchedWard.patientId === wardArray[wardIndex].patientId) {
+            return;
+        }
+
         wardArray[wardIndex].currentStatus = fetchedWard.currentStatus;
         wardArray[wardIndex].patientId = fetchedWard.patientId;
 
         wardDetailContainer.children[2].innerHTML = `Ward Status: ${wardArray[wardIndex].currentStatus}`;
         wardDetailContainer.children[3].innerHTML = `Patient Id: ${wardArray[wardIndex].patientId === null? "-" : wardArray[wardIndex].patientId}`;
+
+        manageWardStatusClass(wardIndex, wardDetailContainer);
+
     } catch (error) {
         const errorMessage = ((error as unknown) as {errorMessage: string}).errorMessage;
         return Promise.reject({errorMessage});
@@ -107,6 +117,41 @@ const refreshAllWardData = async ():Promise<void> => {
     }
 };
 
+const addClass = (className:string, htmlElement:HTMLElement) => {
+    if (htmlElement.classList.contains(className)) {
+        return;
+    }
+
+    htmlElement.classList.add(className);
+};
+
+const removeClass = (className:string, htmlElement:HTMLElement) => {
+    if (!htmlElement.classList.contains(className)) {
+        return;
+    }
+
+    htmlElement.classList.remove(className);
+};
+
+const manageWardStatusClass = (wardIndex:number, wardDetailContainer:HTMLDivElement):void => {
+    if (wardArray[wardIndex].currentStatus.toString().toLowerCase() === "available") {
+        addClass("available", wardDetailContainer);
+    } else {
+        removeClass("available", wardDetailContainer);
+    }
+
+    if (wardArray[wardIndex].currentStatus.toString().toLowerCase() === "occupied") {
+        addClass("occupied", wardDetailContainer);
+    } else {
+        removeClass("occupied", wardDetailContainer);
+    }
+    
+    if (wardArray[wardIndex].currentStatus.toString().toLowerCase() !== "available" && wardArray[wardIndex].currentStatus.toString().toLowerCase() !== "occupied") {
+        addClass("discharged", wardDetailContainer);
+    } else {
+        removeClass("discharged", wardDetailContainer);
+    }
+}
 
 // export default {
 //     wardArray,

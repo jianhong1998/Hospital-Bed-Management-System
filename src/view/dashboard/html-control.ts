@@ -57,7 +57,7 @@ const displayPatientInfo = async (patientId: number):Promise<void> => {
         remarksDisplayArea.innerHTML = patient.remarks === null ? patient.remarks : "N.A.";
 
         // Hide ward display block
-        const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh-all-wards");
+        const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh");
         const wardContainer = <HTMLDivElement> document.getElementById("ward-info-container");
 
         refreshAllWardsButton.style.display = "none";
@@ -106,7 +106,7 @@ const closePatientInfoContainer = ():void => {
     const closeButton = <HTMLButtonElement> document.getElementById("button-close-patient-info-container");
     const displayTable = <HTMLTableElement> document.getElementById("table-patient-info-display");
     const container = <HTMLDivElement> displayTable.parentElement;
-    const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh-all-wards");
+    const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh");
     const wardContainer = <HTMLDivElement> document.getElementById("ward-info-container");
 
     clearPatientInfoTable();
@@ -153,4 +153,20 @@ setInterval(
         await displayAllNumbers(await getAllNumbers());
     },
     10000
+);
+
+
+// Refresh Service for Ward display and Summary Dashboard
+const refreshService = async ():Promise<void> => {
+    await refreshAllWardData();
+    await displayAllNumbers(await getAllNumbers());
+};
+
+const refreshButton = <HTMLButtonElement> document.getElementById("button-refresh");
+refreshButton.addEventListener(
+    "click",
+    async () => {
+        await refreshService();
+        await refreshAllWardData();
+    }
 );

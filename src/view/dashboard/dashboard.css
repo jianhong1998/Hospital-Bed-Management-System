@@ -1,31 +1,51 @@
+#loading-board {
+    position: fixed;
+    background-color: white;
+}
+
+/* Section */
+section {
+    overflow: scroll;
+    height: 48.5vh;
+}
+
+/* Ward Display */
 #ward-info-container {
     display: flex;
     flex-wrap: wrap;
-    /* display: block; */
+    justify-content: center;
 }
 
 .ward-detail-container {
     border: 1px solid black;
-    width: 45vw;
+    width: 280px;
     padding: 10px;
+    background-color: white;
 }
 
-#patient-info-container, #table-patient-info-display, #button-close-patient-info-container {
-    display: none;
+.ward-detail-container.available {
+    background-color: #7fffaa;
+    color: black;
 }
 
-th, tr, td {
-    border: solid black 1px;
+.ward-detail-container.discharged {
+    background-color: #f2ff7f;
+    color: black;
 }
 
-section {
-    overflow: scroll;
-    height: 73vh;
+.ward-detail-container.occupied {
+    background-color: #ff9696;
+    color: black;
 }
 
+/* Summary Dashboard */
 #queue-container,
 #container-all-queue {
     display: block;
+}
+
+#queue-container {
+    margin: 0 0 1vh 0;
 }
 
 #container-all-queue {
@@ -42,11 +62,11 @@ section {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 #container-all-queue-body > .queue-number-display-area{
-    width: 24%;
-    margin: 0 auto;
+    width: 23%;
     text-align: center;
 }
 
@@ -55,25 +75,67 @@ section {
     flex-wrap: wrap;
     width: 90%;
     margin: 1vh auto;
-
+    justify-content: space-evenly;
 }
 
 #container-other-info > .queue-number-display-area {
-    margin: 0 auto;
     text-align: center;
-    width: 49%;
+    width: 47.7%;
 }
 
 .queue-number-display-area-title {
     height: 50px;
     overflow: scroll;
+    background-color: white;
 }
 
 .queue-number-display-area {
     padding: auto 0;
-    border: solid 2px skyblue;
+    border: solid 2px black;
 }
 
 .number-container {
-    border-top: solid 2px skyblue;
+    border-top: solid 2px black;
+    background-color: white;
+}
+
+/* Refresh Button */
+#container-refresh-button {
+    display: flex;
+    margin: 0 0 1vh 0;
+}
+
+#button-refresh {
+    margin: 0 auto;
+}
+
+/* Patient Info Display */
+#patient-info-container, #table-patient-info-display, #button-close-patient-info-container {
+    display: none;
+}
+
+th, tr, td {
+    border: solid black 1px;
+}
+
+#table-patient-info-display {
+    width: max-content;
+    margin: 0 auto;
+}
+
+#button-close-patient-info-container {
+    margin: 0 auto;
+}
+
+#table-patient-info-display > caption {
+    font-size: larger;
+    font-weight: bold;
+}
+
+#table-patient-info-display tr {
+    background-color: white;
+}
+
+td {
+    padding: 3px 10px;
 }

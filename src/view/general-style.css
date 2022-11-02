@@ -1,0 +1,23 @@
+html {
+    background-color: #d7fff1;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+}
+
+button {
+    border: white solid 1px;
+    background-color: #349EF0;
+    border-radius: 10%;
+    padding: 5px;
+    color: white;
+}
+
+button:hover {
+    background-color: white;
+    color: #349EF0;
+}
+
+button:focus {
+    background-color: #5CD2FF;
+    color: black;
+}

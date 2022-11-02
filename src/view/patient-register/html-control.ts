@@ -29,6 +29,7 @@ const remarksDisplayArea = <HTMLTableCellElement>document.getElementById('remark
 
 const patientInfoDisplayTableElementsArray = [patientIdDisplayArea, firstNameDisplayArea, lastNameDisplayArea, genderDisplayArea, categoryDisplayArea, contactNumberDisplayArea, dateOfBirthDisplayArea, remarksDisplayArea];
 
+const patientInfoDisplayTableContainer = <HTMLDivElement> document.getElementById("container-table-patient-info-display");
 const patientInfoDisplayTable = <HTMLTableElement>document.getElementById("table-patient-info-display");
 const confirmButton = <HTMLButtonElement>document.getElementById("button-confirm-and-assign-ward");
 
@@ -69,6 +70,8 @@ const clearPatientInfoDisplayTable = () => {
     for (let element of patientInfoDisplayTableElementsArray) {
         element.innerHTML = "";
     }
+    
+    patientInfoDisplayTableContainer.style.display = "none";
     patientInfoDisplayTable.style.display = "none";
     confirmButton.style.display = "none";
 }
@@ -77,7 +80,6 @@ const clearPatientInfoDisplayTable = () => {
 window.addEventListener("load", async () => {
     await getAllQueueData();
     totalNumberOfPatientsInQueue = calculatePatientInQueue();
-    console.log(queueArray);
 });
 patientRegisterForm.addEventListener(
     "submit",
@@ -119,6 +121,7 @@ patientRegisterForm.addEventListener(
         .finally(
             () => {
                 if (currentPatient.patientId !== -1) {
+                    patientInfoDisplayTableContainer.style.display = "block"
                     patientInfoDisplayTable.style.display = "block";
                     confirmButton.style.display = "block";
 
