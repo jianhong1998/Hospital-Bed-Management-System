@@ -153,4 +153,17 @@ patientQueueFetchDataRouter.post('/dequeue', async (req, res) => {
     );
 });
 
+patientQueueFetchDataRouter.get('/patient-admission-today', async (req, res) => {
+    const sqlQuery = "SELECT COUNT(*) AS 'totalPatientAdmission' FROM Patient_Queue WHERE DATE(timeIn) = DATE(NOW());";
+
+    databaseConnection.query(sqlQuery, (error, results, fields) => {
+        if (error) {
+            res.send({errorMessage: error.message});
+            return;
+        }
+
+        res.send(results[0]);
+    });
+});
+
 export default patientQueueFetchDataRouter;

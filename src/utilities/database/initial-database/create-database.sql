@@ -157,3 +157,6 @@ INSERT INTO Patient(firstName, lastName, gender, category, contactNumber, dateOf
 VALUES("JING WEI", "LEE", 1, 1, 99998888, "2003-05-22", "T0399100A", "");
 INSERT INTO Patient(firstName, lastName, gender, category, contactNumber, dateOfBirth, nric, remarks)
 VALUES("JIAN HENG", "LEE", 1, 1, 99998888, "2003-05-22", "T0399200B", "");
+
+SELECT * FROM Patient_Queue ORDER BY timeIn;
+SELECT COUNT(*) AS "totalOccupiedWard" FROM Ward WHERE current_status = "Occupied";

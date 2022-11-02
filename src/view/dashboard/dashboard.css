@@ -1,4 +1,4 @@
-#ward-container {
+#ward-info-container {
     display: flex;
     flex-wrap: wrap;
     /* display: block; */
@@ -19,5 +19,61 @@ th, tr, td {
 }
 
 section {
-    overflow: hidden;
+    overflow: scroll;
+    height: 73vh;
+}
+
+#queue-container,
+#container-all-queue {
+    display: block;
+}
+
+#container-all-queue {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#container-all-queue-header {
+    width: 100%;
+    text-align: center;
+}
+
+#container-all-queue-body {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#container-all-queue-body > .queue-number-display-area{
+    width: 24%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#container-other-info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 1vh auto;
+
+}
+
+#container-other-info > .queue-number-display-area {
+    margin: 0 auto;
+    text-align: center;
+    width: 49%;
+}
+
+.queue-number-display-area-title {
+    height: 50px;
+    overflow: scroll;
+}
+
+.queue-number-display-area {
+    padding: auto 0;
+    border: solid 2px skyblue;
+}
+
+.number-container {
+    border-top: solid 2px skyblue;
 }
