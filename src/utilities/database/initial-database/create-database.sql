@@ -59,7 +59,7 @@ INSERT INTO User_Account
 VALUES(101, "admin", "Admin", "", "123", "Admin");
 
 INSERT INTO User_Account
-VALUES (NULL, "jianhong", "Jian Hong", "Lee", "QWE123", "Reception Crew");
+VALUES (NULL, "robertlee", "Robert", "Lee", "QWE123", "Register Officer");
 
 -- General Ward
 INSERT INTO Ward (ward_type, current_status, patient_id)
@@ -150,12 +150,10 @@ VALUES (2, "available", null);
 
 -- Patient Sample
 INSERT INTO Patient(firstName, lastName, gender, category, contactNumber, dateOfBirth, nric, remarks)
-VALUES("JIAN HONG", "LEE", 1, 1, 98673809, "1998-09-04", "S9876280I", "");
+VALUES("JOSHUA", "LEE", 1, 1, 99998888, "1998-01-01", "S9988100A", "Remarks for Joshua");
 INSERT INTO Patient(firstName, lastName, gender, category, contactNumber, dateOfBirth, nric, remarks)
-VALUES("JIAN LING", "LEE", 1, 1, 99998888, "1999-10-02", "S9988100A", "");
+VALUES("JASON", "YEO", 1, 1, 88887777, "2000-12-31", "S9988200A", "");
 INSERT INTO Patient(firstName, lastName, gender, category, contactNumber, dateOfBirth, nric, remarks)
-VALUES("JING WEI", "LEE", 1, 1, 99998888, "2003-05-22", "T0399100A", "");
+VALUES("CINDY", "Ho", 2, 1, 66665555, "1983-09-12", "G9988100A", "");
 INSERT INTO Patient(firstName, lastName, gender, category, contactNumber, dateOfBirth, nric, remarks)
-VALUES("JIAN HENG", "LEE", 1, 1, 99998888, "2003-05-22", "T0399200B", "");
-
-SELECT * FROM Patient_Queue ORDER BY timeIn;
+VALUES("ALAN", "CHUA", 1, 1, 99997777, "2000-05-22", "T0099100A", "");
