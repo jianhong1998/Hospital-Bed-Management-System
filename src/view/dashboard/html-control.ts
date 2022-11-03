@@ -4,7 +4,14 @@ window.addEventListener("load", async () => {
     await displayWardData();
     await getAllQueueData();
     await displayAllNumbers(await getAllNumbers());
-    await assignWardService();
+    
+    setTimeout(
+        async () => {
+            await assignWardService();
+            await refreshService();
+        },
+        1000
+    );
 });
 
 
@@ -35,6 +42,7 @@ const displayPatientInfo = async (patientId: number):Promise<void> => {
         const patient = await getPatientData(patientId);
         
         const patientIdDisplayArea = <HTMLTableCellElement>document.getElementById('patient-id');
+        const patientNricDisplayArea = <HTMLTableCellElement> document.getElementById('nric');
         const firstNameDisplayArea = <HTMLTableCellElement>document.getElementById('first-name');
         const lastNameDisplayArea = <HTMLTableCellElement>document.getElementById('last-name');
         const genderDisplayArea = <HTMLTableCellElement>document.getElementById('gender');
@@ -48,6 +56,7 @@ const displayPatientInfo = async (patientId: number):Promise<void> => {
         const container = <HTMLDivElement> displayTable.parentElement;
         
         patientIdDisplayArea.innerHTML = patient.patientId.toString();
+        patientNricDisplayArea.innerHTML = patient.nric;
         firstNameDisplayArea.innerHTML = patient.firstName;
         lastNameDisplayArea.innerHTML = patient.lastName;
         genderDisplayArea.innerHTML = patient.gender.toString();
@@ -58,9 +67,11 @@ const displayPatientInfo = async (patientId: number):Promise<void> => {
 
         // Hide ward display block
         const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh");
+        const reminderContainer = <HTMLDivElement> document.getElementById("reminder-view-patient-info");
         const wardContainer = <HTMLDivElement> document.getElementById("ward-info-container");
 
         refreshAllWardsButton.style.display = "none";
+        reminderContainer.style.display = "none";
         wardContainer.style.display = "none";
 
         // Unhide the block
@@ -106,6 +117,8 @@ const closePatientInfoContainer = ():void => {
     const closeButton = <HTMLButtonElement> document.getElementById("button-close-patient-info-container");
     const displayTable = <HTMLTableElement> document.getElementById("table-patient-info-display");
     const container = <HTMLDivElement> displayTable.parentElement;
+    
+    const reminderContainer = <HTMLDivElement> document.getElementById("reminder-view-patient-info");
     const refreshAllWardsButton = <HTMLButtonElement> document.getElementById("button-refresh");
     const wardContainer = <HTMLDivElement> document.getElementById("ward-info-container");
 
@@ -113,6 +126,7 @@ const closePatientInfoContainer = ():void => {
 
     refreshAllWardsButton.style.display = "";
     wardContainer.style.display = "";
+    reminderContainer.style.display = "";
 
     closeButton.style.display = "";
     displayTable.style.display = "";
@@ -167,6 +181,5 @@ refreshButton.addEventListener(
     "click",
     async () => {
         await refreshService();
-        await refreshAllWardData();
     }
 );

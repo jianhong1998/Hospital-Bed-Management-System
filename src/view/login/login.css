@@ -23,13 +23,15 @@ form {
 
 form input {
     display: block;
-    width: 80%;
     margin: 10px auto;
 }
 
 #input-submit {
     display: block;
     margin: 0 auto;
-    width: 20vw;
     height: 5vh;
+}
+
+#input-submit, form input {
+    width: 80%;
 }

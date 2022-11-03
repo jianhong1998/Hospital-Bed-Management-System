@@ -1,8 +1,3 @@
-// import wardDischarge from "./ward-discharge";
-// import wardFunction from "./ward-function";
-// import Ward from "./ward-interface";
-
-
 const wardArray:Array<Ward> = [];
 
 const displayWardData = async ():Promise<void> => {
@@ -44,9 +39,9 @@ const displayWardData = async ():Promise<void> => {
 
         let textNodeArray:Node[] = [
             document.createTextNode(`Ward Id: ${wardArray[i].wardId}`),
-            document.createTextNode(`Ward Type: ${wardArray[i].wardType}`),
-            document.createTextNode(`Ward Status: ${wardArray[i].currentStatus}`),
-            document.createTextNode(`Patient Id: ${wardArray[i].patientId === null? "-" : wardArray[i].patientId}`)
+            document.createTextNode(`[ ${wardArray[i].wardType} ]`),
+            document.createTextNode(`[ ${wardArray[i].currentStatus} ]`),
+            document.createTextNode(`Patient ID: ${wardArray[i].patientId === null? "-" : wardArray[i].patientId}`)
         ]
     
         for (let j = 0; j < textNodeArray.length; j++) {
@@ -82,8 +77,8 @@ const refreshWardData = async (wardId:number):Promise<void> => {
         wardArray[wardIndex].currentStatus = fetchedWard.currentStatus;
         wardArray[wardIndex].patientId = fetchedWard.patientId;
 
-        wardDetailContainer.children[2].innerHTML = `Ward Status: ${wardArray[wardIndex].currentStatus}`;
-        wardDetailContainer.children[3].innerHTML = `Patient Id: ${wardArray[wardIndex].patientId === null? "-" : wardArray[wardIndex].patientId}`;
+        wardDetailContainer.children[2].innerHTML = `[ ${wardArray[wardIndex].currentStatus} ]`;
+        wardDetailContainer.children[3].innerHTML = `Patient ID: ${wardArray[wardIndex].patientId === null? "-" : wardArray[wardIndex].patientId}`;
 
         manageWardStatusClass(wardIndex, wardDetailContainer);
 
@@ -152,11 +147,3 @@ const manageWardStatusClass = (wardIndex:number, wardDetailContainer:HTMLDivElem
         removeClass("discharged", wardDetailContainer);
     }
 }
-
-// export default {
-//     wardArray,
-//     displayWardData,
-//     refreshWardData,
-//     addDischargeFunctionToButton,
-//     refreshAllWardData
-// };

@@ -7,8 +7,8 @@ html {
 button {
     border: white solid 1px;
     background-color: #349EF0;
-    border-radius: 10%;
-    padding: 5px;
+    border-radius: 50px;
+    padding: 7px 10px;
     color: white;
 }
 
