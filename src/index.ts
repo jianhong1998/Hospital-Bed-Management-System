@@ -12,6 +12,12 @@ const startSerer = () => {
                 databaseConnection.end();
                 return;
             }
+
+            if (error.code.includes("ER_ACCESS_DENIED_ERROR")) {
+                console.error("Please check the server and database info from the file server-database-info.json");
+                databaseConnection.end();
+                return;
+            }
     
             console.error(error.message + "\nPlease run command 'npm run setup' to initialise system");
             databaseConnection.end();
