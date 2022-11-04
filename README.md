@@ -1,4 +1,8 @@
 # Hotel-Brd-Management-System
+## Key Feature
+1. User can register a patient into system before assigning them to ward.
+2. 
+
 
 ## Pre-request
 1. NodeJS is installed on your machine.
