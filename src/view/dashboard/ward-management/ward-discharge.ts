@@ -24,8 +24,8 @@ const dischargeWard = (wardId: number):void => {
         changeWardStatus(wardId, WardStatus.DISCHARGED_PENDING_SANITIZING, null);
         refreshWardData(wardId);
 
-        seconds += 5;
-        // minutes += 1;
+        seconds += 0;
+        minutes += 1;
 
         setTimeout(
             () => {
@@ -35,8 +35,8 @@ const dischargeWard = (wardId: number):void => {
             (minutes * 60 + seconds) * 1000
         );
 
-        seconds += 5;
-        // minutes += 2;
+        seconds += 0;
+        minutes += 2;
 
         setTimeout(
             () => {
