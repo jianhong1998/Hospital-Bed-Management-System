@@ -13,7 +13,7 @@ Clone project to your local repository.
 Run terminal under the project root repository.
 
 ### Step 3
-Check the "server-database-info" json file under "src/utilities/". If the database config is different with your MySQL config. Please change accordingly.
+Check the "server-database-info.json" json file under "src/utilities/". If the database config is different with your MySQL config. Please change accordingly.
 
 ### Step 4
 Run command `npm run setup` to initialise the system.
