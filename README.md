@@ -1,7 +1,8 @@
 # Hotel-Brd-Management-System
 ## Key Feature
 1. User can register a patient into system before assigning them to ward.
-2. 
+2. When the user press the ward discharge button, the system will simulate the discharge work flow.
+3. When a patient is registered but the ward for his category is full, then the system will enqueue the patient to the respective category queue. Once there is ward available, then the system will assign the patient in queue to the ward automatically.
 
 
 ## Pre-request
