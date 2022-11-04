@@ -38,11 +38,18 @@ const runSqlFile = (filePath:string, fileName: string) => {
         });
     }
 
-    if (numberOfError == 0) {
-        console.log("Database initialised successfully!");
-    }
+    setTimeout(
+        () => {
+            if (numberOfError == 0) {
+                console.log("Database initialised successfully!");
+            } else {
+                console.error("Database initialised unsuccessfully!\nPlease check the server-database-info.json file");
+            }
 
-    databaseConnection.end();
+            databaseConnection.end();
+        },
+        1000
+    );
 };
 
 const testQuery = ():void => {
