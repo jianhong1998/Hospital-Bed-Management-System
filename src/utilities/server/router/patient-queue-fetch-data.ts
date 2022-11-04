@@ -153,6 +153,7 @@ patientQueueFetchDataRouter.post('/dequeue', async (req, res) => {
     );
 });
 
+// GET the patient admission number for today
 patientQueueFetchDataRouter.get('/patient-admission-today', async (req, res) => {
     const sqlQuery = "SELECT COUNT(*) AS 'totalPatientAdmission' FROM Patient_Queue WHERE DATE(timeIn) = DATE(NOW());";
 

@@ -78,20 +78,7 @@ wardFetchDataRouter.post("/set-ward-status", (req, res) => {
             () => res.send(<string>results),
             1000
         );
-    });    
-
-    // sqlQuery = "SELECT ward_id, ward_type, current_status, patient_id FROM Ward WHERE ward_id = ?;";
-    // databaseConnection.query(sqlQuery, [req.body.wardId], (error, results, fields) => {
-    //     if (error) {
-    //         res.send(error.message);
-    //         return;
-    //     }
-
-    //     setTimeout(
-    //         () => res.send(results),
-    //         1000
-    //     );
-    // })
+    });
 });
 
 wardFetchDataRouter.get("/total-occupied-ward", (req, res) => {

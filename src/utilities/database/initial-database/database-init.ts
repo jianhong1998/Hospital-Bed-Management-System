@@ -9,10 +9,6 @@ const sqlFileName = "create-database.sql";
 
 const runSqlFile = (filePath:string, fileName: string) => {
     const databaseConfig: mysql.ConnectionConfig = {
-        // host: "localhost",
-        // port: 3306,
-        // user: "root",
-        // password: "root"
         host: serverDatabaseInfo.databaseInfo.host,
         port: serverDatabaseInfo.databaseInfo.port,
         user: serverDatabaseInfo.databaseInfo.user,
@@ -51,11 +47,6 @@ const runSqlFile = (filePath:string, fileName: string) => {
 
 const testQuery = ():void => {
     const databaseConfig: mysql.ConnectionConfig = {
-        // host: "localhost",
-        // port: 3306,
-        // user: "root",
-        // password: "root",
-        // database: "HBM_System"
         host: serverDatabaseInfo.databaseInfo.host,
         port: serverDatabaseInfo.databaseInfo.port,
         user: serverDatabaseInfo.databaseInfo.user,
