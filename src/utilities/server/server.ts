@@ -4,9 +4,11 @@ import path from 'path';
 import buildRouter from './router/build-router';
 import fetchDataRouter from './router/fetch-data-router';
 
+import name from "../../../src/";
+
 const server = express();
 const currentFolder = path.join(__dirname);
-const loginFilePath = "../../view/";
+const viewFilePath = "../../../src/view/";
 
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(bodyParser.json());
@@ -14,7 +16,7 @@ server.use(bodyParser.json());
 // Visit homepage
 server.get("/", (req, res) => {
     const htmlFileName = "homepage.html";
-    const htmlFilePath = "../../view/homepage";
+    const htmlFilePath = "../../../src/view/homepage";
 
     res.sendFile(path.join(currentFolder, htmlFilePath, htmlFileName));
 });
@@ -22,7 +24,7 @@ server.get("/", (req, res) => {
 // Visit dashboard
 server.get("/dashboard" , (req, res) => {
     const htmlFileName = "dashboard.html";
-    const htmlFilePath = "../../view/dashboard";
+    const htmlFilePath = "../../../src/view/dashboard";
 
     res.sendFile(path.join(currentFolder, htmlFilePath, htmlFileName));
 })
@@ -30,7 +32,7 @@ server.get("/dashboard" , (req, res) => {
 // Visit login page via GET Request
 server.get("/login", (req, res) => {
     const loginHtmlFileName = "login.html";
-    const loginHtmlFilePath = "../../view/login";
+    const loginHtmlFilePath = "../../../src/view/login";
 
     res.sendFile(path.join(currentFolder, loginHtmlFilePath, loginHtmlFileName));
 });
@@ -38,12 +40,12 @@ server.get("/login", (req, res) => {
 // Visit patient registration page
 server.get("/patient", (req, res) => {
     const patientHtmlFileName = "patient-register.html";
-    const patientHtmlFilePath = "../../view/patient-register";
+    const patientHtmlFilePath = "../../../src/view/patient-register";
     res.sendFile(path.join(currentFolder, patientHtmlFilePath, patientHtmlFileName));
 });
 
 // Access .html and .css files from visit "http://[host]:[port]/view/[filePath]/[fileName]"
-server.use("/view", express.static(path.join(currentFolder, loginFilePath)));
+server.use("/view", express.static(path.join(currentFolder, viewFilePath)));
 
 // Access .js files from visit "http://[host]:[port]/script/[filePath]/[fileName]"
 server.use("/script", buildRouter);

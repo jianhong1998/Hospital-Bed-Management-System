@@ -8,7 +8,7 @@
     "build": "npx tsc",
     "database-init": "node build/utilities/database/initial-database/database-init.js",
     "setup": "npm i --save && npm i --save-dev && npm run build && npm run database-init",
-    "start": "npm run build && nodemon src/index.ts",
+    "start": "npm run build && nodemon build/index.js",
     "test": "npm run build && jasmine"
   },
   "repository": {
