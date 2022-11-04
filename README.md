@@ -11,23 +11,23 @@
 
   ## Run project
 
-    ### Step 1
+  ### Step 1
       Clone project to your local repository.
 
-    ### Step 2
+  ### Step 2
       Run terminal under the project root repository.
 
-    ### Step 3
+  ### Step 3
       Check the "server-database-info.json" json file under "src/utilities/". If the database config is different with your MySQL config. Please change accordingly.
 
-    ### Step 4
+  ### Step 4
       Run command `npm run setup` to initialise the system.
 
-    ### Step 5
+  ### Step 5
       Run command `npm start` to start the server.
 
-    ### Step 6
+  ### Step 6
       Visit the URL display in console by using browser. (Default is `http://localhost:8080/`).
 
   ## Server is not running
-  Check the "server-database-info" json file under "src/utilities/". Ensure the all the config values are correct.
+     Check the "server-database-info" json file under "src/utilities/". Ensure the all the config values are correct.
