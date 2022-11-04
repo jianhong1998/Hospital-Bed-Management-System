@@ -1,4 +1,4 @@
-# Hotel-Brd-Management-System
+# Hotel-Bed-Management-System
 ## Key Feature
 1. User can register a patient into system before assigning them to ward.
 2. When the user press the ward discharge button, the system will simulate the discharge work flow.
